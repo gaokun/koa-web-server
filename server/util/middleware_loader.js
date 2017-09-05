@@ -30,8 +30,8 @@ module.exports = (router) => {
         let filename = dir.name.substring(0, dir.name.length - '.js'.length);
         // logger.info('load middleware: ' + dir.name, url, filename);
         middlewares[filename] = _loadModule(url);
-        next();
       });
+      next();
     });
 
     walker.on('errors', (root, nodeStatsArray, next) => {
