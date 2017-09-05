@@ -1,6 +1,6 @@
 {
   "route": [
-    "GET /user/:id authorization.check|get",
+    "GET /user/:id get",
     "POST /user add"
   ]
 }
