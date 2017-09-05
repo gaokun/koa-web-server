@@ -1,6 +1,8 @@
 "use strict";
 
+const path = require('path');
 const Koa = require('koa');
+const serve = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 const cors = require('kcors');
 const router = require('koa-router')({prefix: '/api'});
@@ -9,6 +11,7 @@ const MiddlewareLoader = require('./util/middleware_loader');
 const ModuleLoader = require('./util/module_loader');
 
 const app = new Koa();
+app.use(serve(__dirname + '/../public'));
 app.use(cors());
 app.use(bodyParser());
 
@@ -17,8 +20,8 @@ MiddlewareLoader().then(middlewares => {
 
   router.use(middlewares.error_handler);
   router.use(middlewares.x_response_time);
-  router.use(middlewares.logger);
   router.use(middlewares.decode_token);
+  router.use(middlewares.logger);
 
   ModuleLoader(middlewares, router);
 });
