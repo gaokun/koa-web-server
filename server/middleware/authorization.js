@@ -1,8 +1,7 @@
 "use strict";
 
 const C = require('../util/const');
-const MessageBean = require('../util/message_bean');
-const Error = MessageBean.Error;
+const {Error} = require('../util/message_bean');
 
 exports.check = async (ctx, next) => {
   if (!ctx.state.user) {

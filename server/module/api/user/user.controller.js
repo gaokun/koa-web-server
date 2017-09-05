@@ -2,16 +2,18 @@
 
 const jwt = require('../../../util/jwt');
 const {Success, Error} = require('../../../util/message_bean');
+const db = require('../../../util/db');
 
 class User {
   async get(ctx) {
     let id = ctx.params.id;
-    ctx.body = `you are searching user (id:${id})`;
+    let user = await db.run(`select * from tuser where id=${id}`);
+    ctx.body = `you are searching user (id:${id}), value = ${JSON.stringify(user)}`;
   }
 
   async add(ctx) {
     let body = ctx.request.body;
-    ctx.body = {lalaa: 32};
+    ctx.body = {newUser: 32};
   }
 
   async createToken(ctx) {

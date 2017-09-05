@@ -12,11 +12,10 @@ const app = new Koa();
 app.use(cors());
 app.use(bodyParser());
 
-app.keys = ['im a newer secret', 'i like turtle'];
-
 MiddlewareLoader().then(middlewares => {
   app.context.middlewares = middlewares;
 
+  router.use(middlewares.error_handler);
   router.use(middlewares.x_response_time);
   router.use(middlewares.logger);
   router.use(middlewares.decode_token);
@@ -25,7 +24,8 @@ MiddlewareLoader().then(middlewares => {
 });
 
 app.use(router.routes());
-app.use(router.allowedMethods()); // OPTIONS?
+app.use(router.allowedMethods());
 
-app.listen(process.env.PORT || 1234);
-console.log('running...');
+let port = process.env.PORT || 5000;
+app.listen(port);
+console.log(`server is running on port:${port} ...`);

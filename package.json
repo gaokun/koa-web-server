@@ -8,7 +8,7 @@
     "start": "node server/server.js"
   },
   "author": "Ken",
-  "license": "ISC",
+  "license": "WTFPL",
   "dependencies": {
     "bluebird": "^3.5.0",
     "jsonwebtoken": "^7.4.3",
@@ -19,6 +19,7 @@
     "koa-static": "^4.0.1",
     "lodash": "^4.17.4",
     "log4js": "^2.3.3",
+    "mysql": "^2.14.1",
     "walk": "^2.3.9"
   }
 }
