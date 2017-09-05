@@ -1,0 +1,23 @@
+{
+  "name": "koa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ken",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "jsonwebtoken": "^7.4.3",
+    "kcors": "^2.2.1",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "lodash": "^4.17.4",
+    "log4js": "^2.3.3",
+    "walk": "^2.3.9"
+  }
+}

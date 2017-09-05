@@ -1,0 +1,22 @@
+.project
+node_modules
+public/bower_components/
+
+#user resources (pic)
+public/data
+
+server/logs/*.log
+server/util/config.js
+
+*.log
+.idea/
+*.map
+
+public/download
+
+public/dist_teacher
+public/dist_student
+
+public/student.html
+public/teacher.html
+webpack.params.js
