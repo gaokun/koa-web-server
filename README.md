@@ -1,3 +1,8 @@
 # koa-web-server
 
-## 自己玩, 爱star不star
+```shell
+npm install;
+npm run start;
+```
+
+## 自己玩, 爱star不star - 断空
