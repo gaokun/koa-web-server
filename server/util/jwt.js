@@ -10,6 +10,7 @@
  */
 
 const JWT = require('jsonwebtoken');
+const _ = require('lodash');
 
 const JWT_SECRET = "!@^$4&*(7856Ghjhfg%hgfgj*&6^$";
 const JWT_APP_TOKEN_EXPIRE_TIME = 30*24*3600; //1 month

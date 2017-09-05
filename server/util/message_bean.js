@@ -26,6 +26,6 @@ function FailMessage(errorCode, message, data) {
 
 module.exports = {
   Error: Error,
-  SuccessMessage: SuccessMessage,
-  FailMessage: FailMessage
+  Success: SuccessMessage,
+  Fail: FailMessage
 };

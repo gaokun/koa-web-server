@@ -21,7 +21,7 @@ MiddlewareLoader().then(middlewares => {
   router.use(middlewares.logger);
   router.use(middlewares.decode_token);
 
-  ModuleLoader(router);
+  ModuleLoader(middlewares, router);
 });
 
 app.use(router.routes());

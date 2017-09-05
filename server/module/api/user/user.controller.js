@@ -1,5 +1,8 @@
 "use strict";
 
+const jwt = require('../../../util/jwt');
+const {Success, Error} = require('../../../util/message_bean');
+
 class User {
   async get(ctx) {
     let id = ctx.params.id;
@@ -8,7 +11,12 @@ class User {
 
   async add(ctx) {
     let body = ctx.request.body;
-    ctx.body = `you are adding an user, ${JSON.stringify(body)}`;
+    ctx.body = {lalaa: 32};
+  }
+
+  async createToken(ctx) {
+    let token = jwt.create({uid: 1});
+    ctx.body = new Success(null, {token: token});
   }
 }
 
