@@ -15,7 +15,7 @@ const path = require('path');
 const fs = require('fs');
 const logger = require('./logger');
 
-const METHODS = ['GET', 'POST', 'DELETE', 'PUT'];
+const METHODS = ['GET', 'POST', 'DELETE', 'PUT', 'ALL'];
 
 function _bind(middlewares, moduleName, router, conf, controller) {
   conf.route.forEach((route) => {
@@ -55,9 +55,17 @@ function _loadModule(moduleName) {
 
 module.exports = (middlewares, router) => {
   let walker = walk.walk(path.join(__dirname, '../module/api/'));
+  let configs = [];
+  configs.push('---------------------');
 
   walker.on('errors', (root, nodeStatsArray, next) => {
     logger.error('module folder error', nodeStatsArray);
+  });
+
+  walker.on('end', () => {
+    configs.forEach((c) => {
+      logger.debug(c);
+    });
   });
 
   walker.on('directories', (root, dirStatsArray, next) => {
@@ -68,6 +76,9 @@ module.exports = (middlewares, router) => {
       let controller = _loadModule(url + '.controller.js');
       if (conf && controller) {
         try {
+          configs.push(`Module: [${dir.name}]`);
+          configs = configs.concat(conf.route);
+          configs.push('---------------------');
           _bind(middlewares, dir.name, router, conf, controller);
           next();
         }

@@ -1,0 +1,5 @@
+{
+  "route": [
+    "ALL /wechat handler"
+  ]
+}

@@ -1,11 +1,11 @@
 "use strict";
 
-const path = require('path');
 const Koa = require('koa');
 const serve = require('koa-static');
 const bodyParser = require('koa-bodyparser');
 const cors = require('kcors');
 const router = require('koa-router')({prefix: '/api'});
+const logger = require('./util/logger');
 
 const MiddlewareLoader = require('./util/middleware_loader');
 const ModuleLoader = require('./util/module_loader');
@@ -29,6 +29,7 @@ MiddlewareLoader().then(middlewares => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
+
 let port = process.env.PORT || 5000;
 app.listen(port);
-console.log(`server is running on port:${port} ...`);
+logger.info(`server is running on port:${port} ...`);
